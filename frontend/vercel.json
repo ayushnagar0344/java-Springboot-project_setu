@@ -1,0 +1,9 @@
+{
+  "version": 2,
+  "public": true,
+  "name": "nyaysetu-frontend",
+  "framework": "vite",
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}
