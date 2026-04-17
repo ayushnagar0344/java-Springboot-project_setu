@@ -1,0 +1,35 @@
+# Root .gitignore for NyaySetu
+
+# IDEs
+.idea/
+.vscode/
+*.swp
+*.iml
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Backend (Spring Boot / Maven)
+backend/target/
+backend/.mvn/
+backend/mvnw
+backend/mvnw.cmd
+backend/logs/
+*.class
+
+# Frontend (React / Vite / Node)
+frontend/node_modules/
+frontend/dist/
+frontend/.env
+frontend/.env.local
+frontend/.env.development.local
+frontend/.env.test.local
+frontend/.env.production.local
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Project-specific
+CREDENTIALS_MASTER.md
+LOGIN_CREDENTIALS.md
