@@ -29,17 +29,13 @@ public class DataInitializer implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        log.info("--- PRODUCTION DATA SEEDING STARTED ---");
+        // Only seed if the database is empty (prevents wiping new users on server restart)
+        if (userRepository.count() > 0) {
+            log.info("--- DATA SEEDING SKIPPED (database already has {} users) ---", userRepository.count());
+            return;
+        }
 
-        // 1. Clear existing data to ensure clean state for the 10-5-4-1 requirement
-        log.info("Resetting judicial databases...");
-        consultationRepository.deleteAll();
-        slotRepository.deleteAll();
-        hearingRepository.deleteAll();
-        caseRepository.deleteAll();
-        lawyerRepository.deleteAll();
-        applicationRepository.deleteAll();
-        userRepository.deleteAll();
+        log.info("--- PRODUCTION DATA SEEDING STARTED (fresh database) ---");
 
         // 2. Seed Admin "ayush"
         createAdmin("ayush", "1111111111", "111");
@@ -59,7 +55,6 @@ public class DataInitializer implements CommandLineRunner {
         }
 
         // 4. Seed 5 Users
-        // 2 users with 1 case each, 2 more users with 1 case each, 1 user with 0 cases = 5 users total
         List<User> users = new ArrayList<>();
         String[] userNames = {"Vikram", "Sita", "Rohit", "Ananya", "Rahul (Empty)"};
         String[] userPasses = {"222", "33"};
