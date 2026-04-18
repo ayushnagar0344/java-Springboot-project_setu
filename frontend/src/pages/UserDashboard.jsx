@@ -101,6 +101,13 @@ const UserDashboard = () => {
           <h3>Active Cases</h3>
           <p className="stat-number" style={{color: '#60a5fa'}}>{cases.length}</p>
         </div>
+        <Link to="/settlements" style={{ textDecoration: 'none' }}>
+          <div className="stat-card premium-card" style={{ borderTop: '3px solid #c084fc', cursor: 'pointer' }}>
+            <div className="stat-icon">⚖️</div>
+            <h3 style={{ color: '#c084fc' }}>Settlements</h3>
+            <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginTop: '0.25rem' }}>Raise a dispute →</p>
+          </div>
+        </Link>
       </div>
 
       {/* New Case Tracking Section */}

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import API from '../services/api';
 import { useAuth } from '../context/AuthContext';
+import { Link } from 'react-router-dom';
 
 const LawyerDashboard = () => {
   const { user } = useAuth();
@@ -79,9 +80,14 @@ const LawyerDashboard = () => {
 
       <div className="admin-actions mt-4 section">
           <h2>Advocate Actions</h2>
-          <button className="btn btn-secondary" onClick={() => alert("Auto-slot generation triggered!")}>
+          <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+            <button className="btn btn-secondary" style={{ width: 'auto' }} onClick={() => alert("Auto-slot generation triggered!")}>
               Sync Available Slots
-          </button>
+            </button>
+            <Link to="/lawyer-settlements" className="btn" style={{ width: 'auto', background: 'rgba(168,85,247,0.2)', border: '1px solid #c084fc', color: '#c084fc' }}>
+              ⚖️ View My Settlements
+            </Link>
+          </div>
       </div>
 
       <style>{`

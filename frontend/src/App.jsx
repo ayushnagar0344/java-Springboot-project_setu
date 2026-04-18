@@ -13,6 +13,8 @@ import UserDashboard from './pages/UserDashboard';
 import LawyerDashboard from './pages/LawyerDashboard';
 import AdminDashboard from './pages/AdminDashboard';
 import OnboardLawyer from './pages/OnboardLawyer';
+import Settlements from './pages/Settlements';
+import LawyerSettlements from './pages/LawyerSettlements';
 import Chatbot from './components/Chatbot';
 
 function App() {
@@ -63,6 +65,16 @@ function App() {
               } 
             />
 
+            {/* User Settlements */}
+            <Route
+              path="/settlements"
+              element={
+                <ProtectedRoute roles={['USER', 'ADMIN']}>
+                  <Settlements />
+                </ProtectedRoute>
+              }
+            />
+
             {/* Lawyer Specific Routes */}
             <Route 
               path="/lawyer-dashboard" 
@@ -71,6 +83,14 @@ function App() {
                   <LawyerDashboard />
                 </ProtectedRoute>
               } 
+            />
+            <Route
+              path="/lawyer-settlements"
+              element={
+                <ProtectedRoute roles={['LAWYER', 'ADMIN']}>
+                  <LawyerSettlements />
+                </ProtectedRoute>
+              }
             />
 
             <Route 
